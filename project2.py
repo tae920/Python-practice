@@ -1,6 +1,5 @@
 # A python program that reads data from file and calculate average with data
 # Author : Taeseok LEE
-# Assessment : Assignment 2 Project 2
 # Date Created : 24/8/2021
 
 # Setting the list
