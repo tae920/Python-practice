@@ -1,7 +1,4 @@
-# A python program to save running time into file with input and read file
-# Author : Taeseok LEE
-# Assessment : Assignment 2 Project 1
-# Date Created : 23/8/2021
+
 
 # Function to save file from input
 def save_file():
