@@ -1,5 +1,6 @@
 # A python program to follow tasks using ClockMain
 # Author : Taeseok LEE
+# Assessment : Assignment 2 Project 3
 # Date Created : 30/8/2021
 
 # Superclass for project 3 which holds general data

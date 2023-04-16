@@ -1,52 +1,33 @@
-# Author: Taeseok LEE (u3230402)
-# Assignment 1 Part 2
-# Date created: 17/7/2021
+# A python program that reads data from file and calculate average with data
+# Author : Taeseok LEE
+# Assessment : Assignment 2 Project 2
+# Date Created : 24/8/2021
 
-# Restaurant names
-num1 = "Joe's Gourmet Burgers"
-num2 = "Main Street Pizza Company"
-num3 = "Corner Café"
-num4 = "Mama's Fine Italian"
-num5 = "The Chef's Kitchen"
+# Setting the list
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+          'August', 'September', 'October', 'November', 'December']
+dayForMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 0]
+steps = []
 
-# Function to get answers from the user
-def customerAnswer():
-    vegeAnswer = input('Is anyone in your party a vegetarian?(Enter YES or NO): ')
-    veganAnswer = input('Is anyone in your party a vegan?(Enter YES or NO): ')
-    glutenAnswer = input('Is anyone in your party gluten-free?(Enter YES or NO): ')
-    vegeAnswer = vegeAnswer.upper()
-    veganAnswer = veganAnswer.upper()
-    glutenAnswer = glutenAnswer.upper()
-    return vegeAnswer, veganAnswer, glutenAnswer
+# Read data from the file line by line
+try:
+    infile = open('steps.txt', 'r')
+    line = infile.readline()
+    while line != '':
+        line = line.rstrip('\n')
+        number = int(line)
+        steps.append(number)
+        line = infile.readline()
+    infile.close()
+except FileNotFoundError as f:
+    print(f)
 
-# Function to evaluate restaurants that user can go
-def analyseAnswer(vegeAnswer, veganAnswer, glutenAnswer):
-    if vegeAnswer == "YES":
-        if veganAnswer == "YES":
-            chosenResults = num3 + '\n' + num5
-        elif veganAnswer == "NO":
-            if glutenAnswer == "YES":
-                chosenResults = num2 + '\n' + num3 + '\n' + num5
-            elif glutenAnswer == "NO":
-                chosenResults = num2 + '\n' + num3 + '\n' + num4 + '\n' + num5
-    elif vegeAnswer == "NO":
-        if veganAnswer == "YES":
-            chosenResults = num3 + '\n' + num5
-        if veganAnswer == "NO":
-            if glutenAnswer == "YES":
-                chosenResults = num2 + '\n' + num3 + '\n' + num5
-            elif glutenAnswer == "NO":
-                chosenResults = num1 + '\n' + num2 + '\n' + num3 + '\n' + num4 + '\n' + num5
-    return chosenResults
-
-# Function to print the result
-def displayResult(restaurant):
-    print('Here are your restaurant choices:\n' + restaurant)
-
-# The main Function
-def main():
-    vegetarian, vegan, gluten = customerAnswer()
-    chosenResults = analyseAnswer(vegetarian, vegan, gluten)
-    displayResult(chosenResults)
-
-main()
+# Calculate average steps and print them
+n = 0
+m = dayForMonth[0]
+print('The average number of steps taken for each month')
+for i in range(12):
+    average= sum(steps[n:m])/dayForMonth[i]
+    print(f'''{months[i]} : {average:.4f}''')
+    n =n + dayForMonth[i]
+    m = m + dayForMonth[i+1]

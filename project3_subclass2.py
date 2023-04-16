@@ -1,5 +1,6 @@
 # A python program using classes and objects to manage employees
 # Author : Taeseok LEE
+# Assessment : Assignment 2 Project 3
 # Date Created : 30/8/2021
 
 from project3_class import Employee
