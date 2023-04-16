@@ -1,40 +1,30 @@
+# Author: Taeseok LEE (u3230402)
+# Assignment 1 Part 1
+# Date created: 13/7/2021
 
+# Collecting informations
+employeeName = input("Enter employee's name: ")
+workedHour = float(input('Enter number of hours worked in a week: '))
+hourlyPayRate = float(input("Enter hourly pay rate: "))
+atoRate = float(input("Enter ATO tax withholding rate: "))
+medicareRate = float(input("Enter Medicare Levy rate: "))
 
-# Function to save file from input
-def save_file():
-    try:
-        outfile = open('running_times.txt', 'w')
-        numOfVideo = int(input('Enter the number of videos: '))
-        for i in range(numOfVideo):
-            time= int(input('Enter the running time: '))
-            outfile.write(str(time)+'\n')
-        outfile.close()
-    except TypeError as t:
-        print(t)
-    except ValueError as v:
-        print(v)
+# Fomulas to calculate
+grossPay = workedHour * hourlyPayRate
+atoTax = grossPay * atoRate
+medicareLevy = grossPay * medicareRate
+totalDeduction = atoTax + medicareLevy
+netPay = grossPay - totalDeduction
 
-# Function to read data from the file
-def read_contents():
-    try:
-        total = 0
-        infile = open('running_times.txt', 'r')
-        line = infile.readline()
-        while line != '':
-            line = line.rstrip('\n')
-            number = int(line)
-            total += number
-            line = infile.readline()
-        infile.close()
-    except FileNotFoundError as f:
-        print(f)
-    # Print the result
-    minute = total//60
-    second = total % 60
-    print('Total running time is:',minute,'min', second, 'sec')
+# Printing the output
+print(f'''
+Employee Name: {employeeName}
+Hours worked: {workedHour}
+Pay Rate: ${hourlyPayRate}
+Gross Pay: ${grossPay}
+Deductions:
+    ATO tax({atoRate*100}%): ${atoTax}
+    Medicare Levy({medicareRate*100}%): ${medicareLevy}
+    Total Deduction: ${totalDeduction}
 
-# Main function
-def main():
-    save_file()
-    read_contents()
-main()
+Net Pay: ${netPay}''')
