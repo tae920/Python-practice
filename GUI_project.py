@@ -1,6 +1,5 @@
 # A python GUI program using list and listbox to calculate average of scores
 # Author : Taeseok LEE
-# Assessment : Assignment 2 Project 4
 # Date Created : 28/8/2021
 
 import tkinter
