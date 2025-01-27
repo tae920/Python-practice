@@ -2,7 +2,7 @@
 # Author : Taeseok LEE
 # Date Created : 30/8/2021
 
-from employee_management_system.employee_class import Employee
+from employee_class import Employee
 
 # subclass of the Employee class
 class Contractor(Employee):

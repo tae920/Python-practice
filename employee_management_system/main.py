@@ -3,9 +3,9 @@
 # Date Created : 30/8/2021
 
 # Importing classes
-from employee_management_system.employee_class import Employee
-from employee_management_system.employee_subclass1 import ShiftEmployee
-from employee_management_system.employee_subclass2 import Contractor
+from employee_class import Employee
+from employee_subclass1 import ShiftEmployee
+from employee_subclass2 import Contractor
 import pickle
 import os.path
 
